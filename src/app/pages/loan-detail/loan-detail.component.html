@@ -1,0 +1,126 @@
+<div class="row">
+  <div class="col-sm-3">
+    <app-profile></app-profile>
+  </div>
+  <div class="col-sm-9">
+    <div class="card">
+      <div class="card-header"><strong>Mortgage Details</strong></div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <table>
+              <tr>
+                <td><strong>Mortgage ID: </strong></td>
+                <td>&nbsp;&nbsp;{{mortgage.mortgageId}}</td>
+              </tr>
+              <tr>
+                <td><strong>Start Date: </strong></td>
+                <td>&nbsp;&nbsp;{{mortgage.startDate | date}}</td>
+              </tr>
+              <tr>
+                <td><strong>End Date: </strong></td>
+                <td>&nbsp;&nbsp;{{mortgage.endDate | date}}</td>
+              </tr>
+              <tr>
+                <td><strong>Mortgage Amount: </strong></td>
+                <td>&nbsp;&nbsp;{{mortgage.mortgageAmount | currency:'EUR'}}</td>
+              </tr>
+              <tr>
+                <td><strong>Mortgage Repaid: </strong></td>
+                <td>&nbsp;&nbsp;{{mortgage.mortgageRepaid | currency:'EUR'}}</td>
+              </tr>
+              <tr>
+                <td><strong>Mortgage Outstanding: </strong> </td>
+                <td>&nbsp;&nbsp;{{mortgage.mortgageOutstanding | currency:'EUR'}}</td>
+              </tr>
+              <tr>
+                <td><strong>Interest Rate(%): </strong></td>
+                <td>&nbsp;&nbsp;{{mortgage.interestRate}}</td>
+              </tr>
+              <tr>
+                <td><strong>Tenure(Months): </strong></td>
+                <td>&nbsp;&nbsp;{{mortgage.tenure}}</td>
+              </tr>
+              <tr>
+                <td><strong>Monthly Payment Date: </strong></td>
+                <td>&nbsp;&nbsp;{{mortgage.emiDate}}th of every month</td>
+              </tr>
+              <tr>
+                <td><strong>Monthly Payment Amount: </strong></td>
+                <td>&nbsp;&nbsp;{{mortgage.emiAmount | currency:'EUR'}}</td>
+              </tr>
+            </table>
+            <br>
+          </div>
+          <div class="col-sm-9">
+            <div *ngIf="!isModifiedMortgage" id="collapseContainer" [ngbCollapse]="isCollapsed">
+              <div class="card">
+                <div class="card-body">
+                  <table>
+                    <tr>
+                      <td><strong>Monthly Payment Date: </strong></td>
+                      <td>&nbsp;&nbsp;
+                        <select class="form-control" name="emiDate" [(ngModel)]="emiDate">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>
+                          <option value="15">15</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input type="radio" name="optradio" value="1" (change)="radioButton($event)"
+                          checked>&nbsp;&nbsp;
+                        <strong>Monthly Payment Amount(Euro): </strong>
+                      </td>
+                      <td>&nbsp;&nbsp;
+                        <input type="text" class="form-control" [disabled]="isAmountDisable" name="emiAmount"
+                          [(ngModel)]="emiAmount">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input type="radio" name="optradio" value="2" (change)="radioButton($event)">&nbsp;&nbsp;
+                        <strong>Tenure(Months): </strong>
+                      </td>
+                      <td>&nbsp;&nbsp;
+                        <input type="text" class="form-control" [disabled]="isTenureDisable" name="emiTenure"
+                          [(ngModel)]="emiTenure">
+                      </td>
+                    </tr>
+                  </table>
+                  <br><br>
+                  <button *ngIf="!isVerifySchedule" type="button" class="btn btn-success"
+                    (click)="verifySchedule()">Verify</button>&nbsp;
+                  <button *ngIf="isVerifySchedule" type="button" class="btn btn-primary"
+                    (click)="confirmSubmit()">Confirm & Submit</button>
+                </div>
+              </div>
+            </div>
+            <app-alert [visible]="isModifiedMortgage" [type]="laertType" [msg]="alertMsg"
+              (alertCloseEvent)="closeAlertBox()">
+            </app-alert>
+          </div>
+          <div class="col-sm-3">
+            <button type="button" class="btn btn-secondary" routerLink="/dashboard">Back</button>&nbsp;
+            <button *ngIf="isCollapsed" type="button" class="btn btn-primary" aria-controls="collapseContainer"
+              (click)="reviseClick()">Revise
+              Payment</button>&nbsp;
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

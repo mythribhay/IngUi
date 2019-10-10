@@ -1,0 +1,26 @@
+<ng-container *ngTemplateOutlet="dataGridTemplate; context:ctx">
+</ng-container>
+
+
+<ng-template #dataGridTemplate let-tblColoums="coloums" let-tblDatas="values">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td *ngFor="let col of tblColoums"><strong>{{col.header}}</strong></td>
+        <td><strong>Action</strong></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of tblDatas">
+
+        <td *ngFor="let col of tblColoums">
+          {{(col.field == 'mortgageAmount')?(data[col.field] | currency:'EUR'): (col.field == 'mortgageOutstanding')?(data[col.field] | currency:'EUR'): (col.field == 'emiDate')?data[col.field]+'th of every month':data[col.field]}}
+        </td>
+        <td>
+          <button type="button" class="btn btn-success" [routerLink]="['/loan-detail',data.mortgageId]">Revise Payment
+          </button>&nbsp;&nbsp;
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-template>

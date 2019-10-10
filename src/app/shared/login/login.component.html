@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-sm-12" style="height: 450px;">
+        <p>&nbsp;</p>
+        <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.status)">
+            <div class="text-center mb-4">
+                <h1 class="h3 mb-3 font-weight-normal">{{title}}</h1>
+            </div>
+
+            <app-alert [visible]="isLoginError" [type]="laertType" [msg]="alertMsg" (alertCloseEvent)="closeAlertBox()">
+            </app-alert>
+
+            <div class="form-label-group">
+                <input type="email" id="email" formControlName="email" class="form-control" placeholder="Email address">
+            </div>
+            <div class="form-label-group">
+                <input type="password" id="password" formControlName="password" class="form-control"
+                    placeholder="Password">
+            </div>
+
+            <button class="btn btn-lg btn-primary-ing btn-block" type="submit">Sign In</button>
+        </form>
+    </div>
+</div>
