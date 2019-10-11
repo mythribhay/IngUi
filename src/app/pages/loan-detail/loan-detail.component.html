@@ -7,7 +7,7 @@
       <div class="card-header"><strong>Mortgage Details</strong></div>
       <div class="card-body">
         <div class="row">
-          <div class="col-sm-12">
+          <div class="col-sm-10">
             <table>
               <tr>
                 <td><strong>Mortgage ID: </strong></td>
@@ -52,13 +52,17 @@
             </table>
             <br>
           </div>
+          <div class="col-sm-2">
+            <button type="button" class="btn btn-secondary" routerLink="/dashboard">Back</button>
+          </div>
           <div class="col-sm-9">
             <div *ngIf="!isModifiedMortgage" id="collapseContainer" [ngbCollapse]="isCollapsed">
               <div class="card">
                 <div class="card-body">
+                  <h5>Revise Schedule</h5>
                   <table>
                     <tr>
-                      <td><strong>Monthly Payment Date: </strong></td>
+                      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Monthly Payment Date: </strong></td>
                       <td>&nbsp;&nbsp;
                         <select class="form-control" name="emiDate" [(ngModel)]="emiDate">
                           <option value="1">1</option>
@@ -114,10 +118,8 @@
             </app-alert>
           </div>
           <div class="col-sm-3">
-            <button type="button" class="btn btn-secondary" routerLink="/dashboard">Back</button>&nbsp;
             <button *ngIf="isCollapsed" type="button" class="btn btn-primary" aria-controls="collapseContainer"
-              (click)="reviseClick()">Revise
-              Payment</button>&nbsp;
+              (click)="reviseClick()">Revise Schedule</button>&nbsp;
           </div>
         </div>
       </div>

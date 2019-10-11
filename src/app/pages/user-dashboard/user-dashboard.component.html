@@ -8,21 +8,26 @@
       <div class="card-body">
         <div class="row">
           <div class="col-sm-3">
-            <strong>Total Outstanding Amount: </strong> {{pieTotalOutstanding | currency:'EUR'}}
+            <strong>Total Outstanding Amount: </strong> {{pieTotalOutstanding | currency:'EUR'}}<br><br>
+            <strong>Total Payment Amount: </strong> {{pieTotalPaymentAmount  | currency:'EUR'}}
           </div>
           <div class="col-sm-9">
             <div style="text-align: center">
-              <p-chart type="pie" [data]="pieData" width="300" height="300"></p-chart>
-            </div>
-          </div>
-          <div class="col-sm-12">
-            <h4>Mortgage Details</h4>
-            <div>
-              <app-grid></app-grid>
+              <p-chart type="pie" [data]="pieData" width="310" height="310"></p-chart>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <hr>
+    <br>
+    <h4>Mortgage Details</h4>
+    <div>
+      <app-grid></app-grid>
     </div>
   </div>
 </div>

@@ -30,5 +30,23 @@ describe('UserService', () => {
     expect(service).toBeTruthy();
   });
 
+  it('shouls call getUserDetails() to retrive user detail via GET request', () => {
+    let userId = 1;
+    const mockResponseData: IUsers = {
+      "userId": 1,
+      "userName": "Tushar",
+      "email": "tushar82das@gmail.com",
+      "dob": "12-06-1989",
+      "contact": "7377163666",
+      "address": "Bangalore"
+    };
+    service.getUserDetails(userId).subscribe(user => {
+      expect(user).toEqual(mockResponseData);
+    });
+    const mockRequest = httpMock.expectOne(`${service.apiFirstUrl}/users/${userId}`);
+    expect(mockRequest.request.method).toBe('GET');
+    mockRequest.flush(mockResponseData);
+  })
+
 
 });

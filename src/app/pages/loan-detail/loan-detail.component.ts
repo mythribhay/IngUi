@@ -73,14 +73,19 @@ export class LoanDetailComponent implements OnInit {
     });
   }
 
+  /**
+   * reviseClick() is the will call on click of Revise button.
+  */
   reviseClick = () => {
     this.isCollapsed = false;
-
     this.emiDate = Number(this.mortgage.emiDate);
     this.emiAmount = this.mortgage.emiAmount;
     this.emiTenure = this.mortgage.tenure;
   }
 
+  /**
+   * radioButton() will trigger on radio button selection.
+  */
   radioButton = (event) => {
     let radioVal = event.target.value;
     if (radioVal == 1) {
@@ -126,18 +131,18 @@ export class LoanDetailComponent implements OnInit {
     reqObj['tenure'] = this.emiTenure;
 
     debugger;
-    this.isModifiedMortgage = true;
-    this.laertType = 'success';
-    this.alertMsg = 'Mortgage Updated Successfully!';
-    debugger;
-    // this.mortgageService.modifyMortgageRequest(reqObj).subscribe(data => {
-    //   if (data != null && data != undefined) {
-    //     let val = JSON.parse(JSON.stringify(data));
-    //     if (val.message == 'success') {
-    //       this.isModifiedMortgage = true;
-    //     }
-    //   }
-    // });
+    this.mortgageService.modifyMortgageRequest(reqObj).subscribe(data => {
+      debugger;
+      if (data != null && data != undefined) {
+        let val = JSON.parse(JSON.stringify(data));
+        if (val.message == 'success') {
+          this.initGetAllMortgages();
+          this.isModifiedMortgage = true;
+          this.laertType = 'success';
+          this.alertMsg = 'Mortgage Updated Successfully!';
+        }
+      }
+    });
 
   }
 

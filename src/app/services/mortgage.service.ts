@@ -10,10 +10,7 @@ export class MortgageService {
 
   constructor(private _http: HttpClient) { }
 
-  apiUrl: string = 'http://localhost:3000/mortgages';
-
   apiFirstUrl: string = 'http://10.117.189.56:8883/ingMortgage';
-  apiSecondUrl: string = 'http://10.117.189.175:8883/ingMortgage';
 
   /**
    * getMortgagesList() is user retrive mortgage list from the server.
@@ -49,7 +46,7 @@ export class MortgageService {
    * confirmSubmitRequest() is used to update mortgage base on the mortgage id.
   */
   modifyMortgageRequest = (reqData) => {
-    return this._http.post(this.apiSecondUrl + '/update', reqData);
+    return this._http.put(this.apiFirstUrl + '/update', reqData);
   }
 
 }

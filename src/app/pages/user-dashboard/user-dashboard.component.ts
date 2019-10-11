@@ -19,6 +19,7 @@ export class UserDashboardComponent implements OnInit {
   pieChatBG = ["#FF6384", "#36A2EB", "#FFCE56"];
   pieChatBGHover = ["#FF6384", "#36A2EB", "#FFCE56"];
   pieTotalOutstanding = 0;
+  pieTotalPaymentAmount = 0;
 
   loans: IMortgage[];
 
@@ -62,8 +63,10 @@ export class UserDashboardComponent implements OnInit {
       this.loans = data;
 
       this.pieTotalOutstanding = 0;
+      this.pieTotalPaymentAmount = 0;
       for (var i = 0; i < data.length; i++) {
         this.pieTotalOutstanding = (this.pieTotalOutstanding + data[i].mortgageOutstanding);
+        this.pieTotalPaymentAmount = (this.pieTotalPaymentAmount + data[i].emiAmount);
       }
 
       this.getPieChatDataFromMortgage();

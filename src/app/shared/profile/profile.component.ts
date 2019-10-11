@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
   }
 
   initGetUser = () => {
-    this.userSession = JSON.parse(localStorage.getItem("user"));
+    this.userSession = JSON.parse(localStorage.getItem('user'));
   }
 
   initGetUserDetail = () => {
@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit {
         contact: this.user.contact,
         address: this.user.address
       };
-    })
+    });
   }
 
 }

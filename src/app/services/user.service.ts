@@ -12,11 +12,7 @@ export class UserService {
 
   constructor(private _http: HttpClient, private router: Router) { }
 
-  apiUrl: string = 'http://localhost:3000/crud-users';
-
   apiFirstUrl: string = 'http://10.117.189.56:8883/ingMortgage';
-
-  apiSecondUrl: string = 'http://10.117.189.175:8883/ingMortgage';
 
   /**
    * Declare loginStatus global veriable to track the login status.
@@ -48,7 +44,7 @@ export class UserService {
    * This function is to check user login.
   */
   userLogin = (reqData): Observable<ILoginUser[]> => {
-    return this._http.post<ILoginUser[]>(this.apiSecondUrl + '/login', reqData);
+    return this._http.post<ILoginUser[]>(this.apiFirstUrl + '/login', reqData);
   }
 
   /**

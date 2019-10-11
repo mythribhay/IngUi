@@ -25,7 +25,8 @@ export class GridComponent implements OnInit {
       { field: 'interestRate', header: 'Interest Rate(%)' },
       { field: 'mortgageOutstanding', header: 'Outstanding' },
       { field: 'emiAmount', header: 'Payment Amount' },
-      { field: 'emiDate', header: 'Payment Date' }
+      { field: 'emiDate', header: 'Payment Date' },
+      { field: 'startDate', header: 'Start Date' }
     ];
 
     this.initGetAllMortgages();

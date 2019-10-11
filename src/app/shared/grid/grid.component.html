@@ -14,10 +14,10 @@
       <tr *ngFor="let data of tblDatas">
 
         <td *ngFor="let col of tblColoums">
-          {{(col.field == 'mortgageAmount')?(data[col.field] | currency:'EUR'): (col.field == 'mortgageOutstanding')?(data[col.field] | currency:'EUR'): (col.field == 'emiDate')?data[col.field]+'th of every month':data[col.field]}}
+          {{(col.field == 'mortgageAmount')?(data[col.field] | currency:'EUR'): (col.field == 'mortgageOutstanding')?(data[col.field] | currency:'EUR'):(col.field == 'emiAmount')?(data[col.field] | currency:'EUR'):(col.field == 'emiDate')?data[col.field]+'th of every month':data[col.field]}}
         </td>
         <td>
-          <button type="button" class="btn btn-success" [routerLink]="['/loan-detail',data.mortgageId]">Revise Payment
+          <button type="button" class="btn btn-success" [routerLink]="['/loan-detail',data.mortgageId]">View Details
           </button>&nbsp;&nbsp;
         </td>
       </tr>
